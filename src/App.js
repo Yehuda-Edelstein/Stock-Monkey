@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Form from './components/Form.jsx';
 
-function App() {
+function App(props) {
+
+  // const [stocks, setStocks] = useState([])
+  
+  // const searchOptions = {
+  //   key: process.env.REACT_APP_API_KEY,
+  //   api: `https://finnhub.io/docs/api/v1/`
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Form />
+      <Footer />
     </div>
   );
 }
