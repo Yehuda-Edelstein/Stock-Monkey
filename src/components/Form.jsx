@@ -8,15 +8,22 @@ function Form (props){
 
     const initialState = ({form: symbol})
     const [formState, setFormState] = useState([])
+    const [formPrice, setFormPrice] = useState({})
+    const [formLoading, setFormLoading] = useState(false)
 
     const handleChange = ev => setFormState({...formState, [ev.target.id]: ev.target.value})
 
     const handleSubmit = ev => {
         ev.preventDefault()
+        setFormLoading(true)
+        setFormPrice({})
+        
+
         if (formState.form.length < 1) {return}
         
         const tickerURL = `${finnhubURL}quote?symbol=${formState.form}&token=${myKey}`
-        const nameURL = `${finnhubURL}search?q=${formState.form}&token=${myKey}`
+        //FOR NAME LOOK UP
+        // const nameURL = `${finnhubURL}search?q=${formState.form}&token=${myKey}`
             
             fetch(tickerURL)
                 .then(res => res.json())
@@ -26,6 +33,8 @@ function Form (props){
                         console.log("No Ticker")
                         return
                     }
+                    setFormPrice({price, symbol: formState.form})
+                    setFormLoading(false)
                     console.log(price)
                 })
                 .catch(err => {
@@ -40,17 +49,22 @@ function Form (props){
             //         let ticker = res.symbol
             //         console.log(ticker)
             //     })
+
         setFormState(initialState)
     }
 
     return (
         <div>
             <form className='form' onSubmit={handleSubmit}>
-                <input type='text' onChange={handleChange} value={formState.form} id='form'></input>
+                <input className='input' type='text' onChange={handleChange} value={formState.form} id='form'></input>
                 <button className='button'>Search</button>
             </form>
-            <div className='price'>
-            </div>
+            {Object.keys(formPrice).length ? <div className='price'><span>{`${formPrice.symbol} is currently trading at $${formPrice.price}`}</span>
+            </div> : null}
+            {formLoading ? <div className='loading'>Loading...</div> : null}
+            {!Object.keys(formPrice).length && !formLoading ? <div className='intro'>
+                Check your stock prices!
+            </div> : null}
         </div>
     );
 }
