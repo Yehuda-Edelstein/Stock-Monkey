@@ -10,6 +10,7 @@ function Form (props){
     const [formState, setFormState] = useState([])
     const [formPrice, setFormPrice] = useState({})
     const [formLoading, setFormLoading] = useState(false)
+    const [formError, setFormError] = useState(false)
 
     const handleChange = ev => setFormState({...formState, [ev.target.id]: ev.target.value})
 
@@ -17,6 +18,7 @@ function Form (props){
         ev.preventDefault()
         setFormLoading(true)
         setFormPrice({})
+        setFormError(false)
         
 
         if (formState.form.length < 1) {return}
@@ -30,7 +32,8 @@ function Form (props){
                 .then(res => {
                     let price = res.c
                     if (price === 0) {
-                        console.log("No Ticker")
+                        setFormLoading(false)
+                        setFormError(true)
                         return
                     }
                     setFormPrice({price, symbol: formState.form})
@@ -62,7 +65,8 @@ function Form (props){
             {Object.keys(formPrice).length ? <div className='price'><span>{`${formPrice.symbol} is currently trading at $${formPrice.price}`}</span>
             </div> : null}
             {formLoading ? <div className='loading'>Loading...</div> : null}
-            {!Object.keys(formPrice).length && !formLoading ? <div className='intro'>
+            {formError ? <div className='error'>Sorry! No such ticker found.</div> : null}
+            {!Object.keys(formPrice).length && !formLoading && !formError ? <div className='intro'>
                 Check your stock prices!
             </div> : null}
         </div>

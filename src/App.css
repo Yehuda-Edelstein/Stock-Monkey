@@ -12,6 +12,14 @@ body {
   padding-bottom: 15px;
 }
 
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 .form {
   text-align: center;
   justify-content: center;
@@ -30,7 +38,7 @@ body {
   margin-left: 15px;
 }
 
-.intro, .loading, .price {
+.intro, .loading, .price, .error {
   text-align: center;
   margin-top: 25px;
 }
