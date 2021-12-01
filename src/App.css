@@ -25,7 +25,11 @@ body {
   justify-content: center;
 }
 
-.input {
+.price, .ticker {
+  font-size: 1.5rem;
+}
+
+/* .input {
   width: 25rem;
   height: 4rem;
   padding-left: 5px;
@@ -36,9 +40,9 @@ body {
   width: 5rem;
   height: 4.4rem;
   margin-left: 15px;
-}
+} */
 
-.intro, .loading, .price, .error {
+.intro, .loading, .price-info, .error {
   text-align: center;
   margin-top: 25px;
 }

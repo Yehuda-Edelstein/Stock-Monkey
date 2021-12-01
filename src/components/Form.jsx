@@ -23,9 +23,9 @@ function Form (props){
 
         if (formState.form.length < 1) {return}
         
-        const tickerURL = `${finnhubURL}quote?symbol=${formState.form}&token=${myKey}`
+        const tickerURL = `${finnhubURL}quote?symbol=${formState.form.toUpperCase()}&token=${myKey}`
         //FOR NAME LOOK UP
-        // const nameURL = `${finnhubURL}search?q=${formState.form}&token=${myKey}`
+        const nameURL = `${finnhubURL}search?q=${formState.form}&token=${myKey}`
             
             fetch(tickerURL)
                 .then(res => res.json())
@@ -62,7 +62,7 @@ function Form (props){
                 <input className='input' type='text' onChange={handleChange} value={formState.form} id='form'></input>
                 <button className='button'>Search</button>
             </form>
-            {Object.keys(formPrice).length ? <div className='price'><span>{`${formPrice.symbol} is currently trading at $${formPrice.price}`}</span>
+            {Object.keys(formPrice).length ? <div className='price-info'><span className='ticker'>{`${formPrice.symbol.toUpperCase()} `}</span>{`is currently trading at `}<span className='price'>{`$${formPrice.price}`}</span>
             </div> : null}
             {formLoading ? <div className='loading'>Loading...</div> : null}
             {formError ? <div className='error'>Sorry! No such ticker found.</div> : null}
