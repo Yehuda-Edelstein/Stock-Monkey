@@ -18,7 +18,6 @@ function App(props) {
     <div>
       <Header />
       <Form />
-      <Footer />
     </div>
   );
 }

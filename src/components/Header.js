@@ -3,7 +3,7 @@ import React from 'react';
 function Header(props) {
     return (
         <div className='header'>
-            Header
+            St<span className='monkey'>🐵</span>ck   M<span className='monkey'>🐵</span>nkey
         </div>
     );
 }
