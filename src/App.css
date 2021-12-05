@@ -14,7 +14,7 @@ body {
   text-align: center;
   background-color: rgba(213, 228, 0, 0.1);
   background: linear-gradient(rgb(90, 97, 0), rgba(213, 228, 0, 0.0));
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 30px;
@@ -23,6 +23,15 @@ body {
   letter-spacing: 5px;
 }
 
+.nav {
+  background-color: rgb(117, 117, 117, .5);
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .monkey {
   text-align: center;
   justify-content: center;
@@ -30,7 +39,7 @@ body {
 }
 
 .main {
-  margin-top: 250px;
+  margin-top: 200px;
   font-size: 25px;
   display: flex;
   justify-content: center;
@@ -93,7 +102,7 @@ input:focus {
 }
 
 .link {
-  margin-top: 330px;
+  margin-top: 270px;
   font-size: 3rem;
 }
 

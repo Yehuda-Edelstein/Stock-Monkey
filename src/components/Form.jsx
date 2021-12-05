@@ -15,11 +15,6 @@ function Form (props){
     const handleChange = ev => {
         ev.preventDefault()
         setFormState({...formState, [ev.target.id]: ev.target.value})
-        // HOW TO HAVE FORM WORK FOR FOR NAME LOOK UP TOO?
-        // const nameURL = `${finnhubURL}search?q=${formState.form}&token=${myKey}`
-        // fetch(nameURL)
-        //     .then(res => res.json())
-        //     .then(console.log)
     }
 
     const handleSubmit = ev => {
@@ -30,8 +25,6 @@ function Form (props){
         setFormPrice({})
         setFormError(false)
         
-        
-
             const tickerURL = `${finnhubURL}quote?symbol=${formState.form.toUpperCase()}&token=${myKey}`
             fetch(tickerURL)
                 .then(res => res.json())
@@ -53,7 +46,6 @@ function Form (props){
 
     return (
         <div>
-       
         <div className='main'>
             
             <form className='form' onSubmit={handleSubmit}>
