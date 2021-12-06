@@ -1,2 +1,2 @@
-# Stock Monkey | Project 2 
+# Stock Monkey
 
